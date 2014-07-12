@@ -8,40 +8,54 @@ print_step () {
   echo ""
 }
 
-print_step "Update apt"
+print_step "Updating apt"
 sudo apt-get update
 sudo apt-get upgrade
 
-print_step "Install build-essential, curl, git, and mercurial"
+print_step "Installing build-essential, curl, git, and mercurial"
 sudo apt-get install build-essential curl git mercurial -y
 
-print_step "Install rbenv"
-cd
-git clone git://github.com/sstephenson/rbenv.git .rbenv
+print_step "Authenticating with GitHub"
+ssh -o "StrictHostKeyChecking no" -T git@github.com
 
-echo 'PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-PATH=$HOME/.rbenv/bin:$PATH
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-$HOME/.rbenv/bin/rbenv init -
+###########
+# Ruby installation temporarily disabled
+###########
 
-git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+#print_step "Installing rbenv"
+#cd
+#git clone git://github.com/sstephenson/rbenv.git .rbenv
 
-echo 'PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-PATH=$HOME/.rbenv/plugins/ruby-build/bin:$PATH
+#echo 'PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+#PATH=$HOME/.rbenv/bin:$PATH
+#echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+#$HOME/.rbenv/bin/rbenv init -
 
+#git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-print_step "Install Ruby 2.1.2"
-$HOME/.rbenv/bin/rbenv install 2.1.2
-$HOME/.rbenv/bin/rbenv global 2.1.2
+#echo 'PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+#PATH=$HOME/.rbenv/plugins/ruby-build/bin:$PATH
 
-print_step "Install Go"
+#print_step "Install Ruby 2.1.2"
+#$HOME/.rbenv/bin/rbenv install 2.1.2
+#$HOME/.rbenv/bin/rbenv global 2.1.2
+
+###########
+# End of disabled Ruby section
+###########
+
+print_step "Installing Go"
 sudo apt-get install golang -y
 
-print_step "Setup Go"
+print_step "Creating go/bin directory"
 sudo mkdir $HOME/gosource/bin
+
+print_step "Chowning GOPATH directory"
 sudo chown -R vagrant:vagrant $HOME/gosource
 
+print_step "Exporting GOPATH, GOBIN, and modifying PATH"
 echo 'export GOPATH="$HOME/gosource"' >> ~/.bashrc
 echo 'export GOBIN="$HOME/gosource/bin"' >> ~/.bashrc
 echo 'PATH=$GOBIN:$PATH' >> ~/.bashrc
-echo "DONE!"
+
+print_step "DONE!"
