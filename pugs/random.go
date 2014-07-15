@@ -26,7 +26,6 @@ func RandomHandler(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	writer.WriteHeader(http.StatusOK)
 	fmt.Fprintf(writer, "<html><body><img src='%s' /></body></html>", resp["pug"].(string))
 
 	return

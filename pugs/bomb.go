@@ -37,7 +37,6 @@ func BombHandler(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	writer.WriteHeader(http.StatusOK)
 	fmt.Fprintf(writer, "<html><body>")
 	for _, pugUrl := range resp["pugs"].([]interface{}) {
 		fmt.Fprintf(writer, "<img src='%s' />", pugUrl.(string))

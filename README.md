@@ -53,3 +53,6 @@ Once you have set everything up, you should be able to edit the code in your fav
 
 * `/pugs/random` - returns a random pug
 * `/pugs/bomb/<COUNT>` - returns <COUNT> pugs
+
+* `/kittens/random` - returns a random kitten
+* `/kittens/bomb/<COUNT>` - returns <COUNT> kittens

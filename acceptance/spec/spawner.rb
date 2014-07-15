@@ -7,7 +7,7 @@ class Spawner
     while num_attempts < 20
       begin
         uri = URI.parse("http://localhost:9999")
-        response = Net::HTTP.get_response(uri)
+        Net::HTTP.get_response(uri)
         return
       rescue Errno::ECONNREFUSED
         num_attempts += 1
