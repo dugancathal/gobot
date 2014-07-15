@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/arjunsharma/gobot/images"
 	"github.com/arjunsharma/gobot/kittens"
 	"github.com/arjunsharma/gobot/pugs"
 	"github.com/gorilla/mux"
@@ -16,6 +17,8 @@ func main() {
 
 	router.HandleFunc("/kittens/random", kittens.RandomHandler)
 	router.HandleFunc("/kittens/bomb/{count}", kittens.BombHandler)
+
+	router.HandleFunc("/images/{query}", images.QueryHandler)
 
 	router.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(200)

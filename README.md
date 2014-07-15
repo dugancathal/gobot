@@ -56,3 +56,5 @@ Once you have set everything up, you should be able to edit the code in your fav
 
 * `/kittens/random` - returns a random kitten
 * `/kittens/bomb/<COUNT>` - returns <COUNT> kittens
+
+* `/images/<QUERY>` - returns an image relating to <QUERY>
