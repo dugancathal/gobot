@@ -10,7 +10,9 @@ A bot to serve up some sweet API functions
 ## Get set up for development
 
 1. `git clone git@github.com:arjunsharma/gobot.git`
+  * You will want to clone it into $GOPATH/src/github.com/arjunsharma/gobot, which will allow for your local IDE to correctly recognize the app's dependencies as valid syntax
 1. `cd gobot`
+1. [OPTIONAL] `./install_dependencies.sh` if you want to `go get` all of the app's dependencies locally
 1. `vagrant up`, which creates a VM with Ubuntu 14.04, 2 CPUs, and 2GB of RAM, and does the following:
   * Forwards port 9999 on the VM to 9999 on the host
   * Syncs the project folder to `$HOME/gosource/src/github.com/arjunsharma/gobot`
@@ -29,8 +31,14 @@ A bot to serve up some sweet API functions
 
 1. `vagrant ssh`
 1. `cd $GOPATH/src/github.com/arjunsharma/gobot`
+1. `./install_dependencies.sh`
 1. `go run main.go`
 1. From your host machine, navigate your browser to `http://localhost:9999`
 1. You should see the behavior defined by the root route handler!
 
 Once you have set everything up, you should be able to edit the code in your favorite editor, and run the app or its tests from the vagrant box.
+
+## Supported Routes
+
+`/pugs/random` - returns a random pug
+`/pugs/bomb/<COUNT>` - returns <COUNT> pugs
