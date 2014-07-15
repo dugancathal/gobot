@@ -18,31 +18,21 @@ sudo apt-get install build-essential curl git mercurial -y
 print_step "Authenticating with GitHub"
 ssh -o "StrictHostKeyChecking no" -T git@github.com
 
-###########
-# Ruby installation temporarily disabled
-###########
+print_step "Installing rbenv"
+cd
+git clone git://github.com/sstephenson/rbenv.git .rbenv
 
-#print_step "Installing rbenv"
-#cd
-#git clone git://github.com/sstephenson/rbenv.git .rbenv
+echo 'PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+$HOME/.rbenv/bin/rbenv init -
 
-#echo 'PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-#PATH=$HOME/.rbenv/bin:$PATH
-#echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-#$HOME/.rbenv/bin/rbenv init -
+git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-#git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 
-#echo 'PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-#PATH=$HOME/.rbenv/plugins/ruby-build/bin:$PATH
-
-#print_step "Install Ruby 2.1.2"
-#$HOME/.rbenv/bin/rbenv install 2.1.2
-#$HOME/.rbenv/bin/rbenv global 2.1.2
-
-###########
-# End of disabled Ruby section
-###########
+print_step "Installing Ruby 2.1.2"
+$HOME/.rbenv/bin/rbenv install 2.1.2
+$HOME/.rbenv/bin/rbenv global 2.1.2
 
 print_step "Installing Go"
 sudo apt-get install golang -y

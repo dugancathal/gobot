@@ -19,7 +19,7 @@ A bot to serve up some sweet API functions
   * Update apt
   * Install build-essential, curl, git, and mercurial
   * Authenticate you with GitHub
-  * [DISABLED] Install rbenv and ruby (for acceptance tests)
+  * Install rbenv and ruby (for acceptance tests)
   * Install Go
   * Set your `GOBIN` at `$HOME/gosource/bin`
   * Set your `GOPATH` at `$HOME/gosource`
