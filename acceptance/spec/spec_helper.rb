@@ -1,4 +1,5 @@
 require 'spawner'
+require 'json'
 
 RSpec.configure do |config|
   config.filter_run :focus

@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/arjunsharma/gobot/carlton"
+	"github.com/arjunsharma/gobot/facts"
 	"github.com/arjunsharma/gobot/images"
 	"github.com/arjunsharma/gobot/kittens"
 	"github.com/arjunsharma/gobot/pugs"
@@ -19,6 +20,8 @@ func main() {
 
 	router.HandleFunc("/kittens/random", kittens.RandomHandler)
 	router.HandleFunc("/kittens/bomb/{count}", kittens.BombHandler)
+
+	router.HandleFunc("/facts/cat", facts.CatHandler)
 
 	router.HandleFunc("/images/{query}", images.QueryHandler)
 
