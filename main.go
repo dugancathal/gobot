@@ -7,6 +7,7 @@ import (
 	"github.com/arjunsharma/gobot/images"
 	"github.com/arjunsharma/gobot/kittens"
 	"github.com/arjunsharma/gobot/pugs"
+	"github.com/arjunsharma/gobot/soothe"
 	"github.com/gorilla/mux"
 )
 
@@ -19,6 +20,8 @@ func main() {
 	router.HandleFunc("/kittens/bomb/{count}", kittens.BombHandler)
 
 	router.HandleFunc("/images/{query}", images.QueryHandler)
+
+	router.HandleFunc("/soothe", soothe.SootheHandler)
 
 	router.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(200)

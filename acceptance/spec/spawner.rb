@@ -4,7 +4,7 @@ class Spawner
   def self.spawn
     @@gofer_pid = Process.spawn("go run $GOPATH/src/github.com/arjunsharma/gobot/main.go", :pgroup => true)
     num_attempts = 0
-    while num_attempts < 20
+    while num_attempts < 50
       begin
         uri = URI.parse("http://localhost:9999")
         Net::HTTP.get_response(uri)
