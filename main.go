@@ -10,6 +10,7 @@ import (
 	"github.com/arjunsharma/gobot/facts"
 	"github.com/arjunsharma/gobot/images"
 	"github.com/arjunsharma/gobot/kittens"
+	"github.com/arjunsharma/gobot/names"
 	"github.com/arjunsharma/gobot/pugs"
 	"github.com/arjunsharma/gobot/soothe"
 	"github.com/gorilla/mux"
@@ -31,6 +32,9 @@ func main() {
 
 	router.HandleFunc("/carlton", carlton.DanceHandler)
 
+	router.HandleFunc("/names", names.CsvNameHandler).Headers("Accept", "text/csv")
+	router.HandleFunc("/names", names.JsonNameHandler)
+
 	router.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(200)
 		routes := make(map[string]interface{})
@@ -41,6 +45,7 @@ func main() {
 			"kitten_random": "/pugs/random",
 			"cat_facts":     "/facts/cat",
 			"image_query":   "/images/:query",
+			"names":       "/names",
 			"soothe":        "/soothe",
 			"carlton":       "/carlton",
 		}
