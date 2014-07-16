@@ -32,6 +32,7 @@ A bot to serve up some sweet API functions
 1. `vagrant ssh`
 1. `cd $GOPATH/src/github.com/arjunsharma/gobot`
 1. `./install_dependencies.sh`
+1. `source defaults.env`
 1. `go run main.go`
 1. From your host machine, navigate your browser to `http://localhost:9999`
 1. You should see the behavior defined by the root route handler!

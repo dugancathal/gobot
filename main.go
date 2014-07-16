@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/arjunsharma/gobot/carlton"
 	"github.com/arjunsharma/gobot/facts"
@@ -34,5 +35,5 @@ func main() {
 		fmt.Fprintf(writer, "NICE!")
 	})
 	http.Handle("/", router)
-	http.ListenAndServe(":9999", nil)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }
